@@ -1,0 +1,10 @@
+[package]
+name = "arrpc-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Workspace deps
+serde = { workspace = true }
+async-trait = { workspace = true }
+anyhow = { workspace = true }
