@@ -1,0 +1,20 @@
+[package]
+name = "arrpc-derive"
+description = "Macros for ARRPC"
+authors = ["Jay Jeyaruban <jayjeyaruban@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/JayJeyaruban/arrpc"
+homepage = "https://github.com/JayJeyaruban/arrpc"
+readme = "README.md"
+license = "MIT"
+
+[dependencies]
+proc-macro2 = "1.0.69"
+quote = "1.0.33"
+syn = { version = "2.0.39", features = ["full"] }
+convert_case = "0.6.0"
+
+
+[lib]
+proc-macro = true

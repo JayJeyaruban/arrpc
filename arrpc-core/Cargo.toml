@@ -1,0 +1,16 @@
+[package]
+name = "arrpc-core"
+description = "Core traits and types for ARRPC"
+authors = ["Jay Jeyaruban <jayjeyaruban@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/JayJeyaruban/arrpc"
+homepage = "https://github.com/JayJeyaruban/arrpc"
+readme = "README.md"
+license = "MIT"
+
+[dependencies]
+# Workspace deps
+serde = { workspace = true }
+async-trait = { workspace = true }
+anyhow = { workspace = true }

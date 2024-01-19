@@ -1,0 +1,39 @@
+[package]
+name = "arrpc-contract"
+description = "Default contracts for ARRPC"
+authors = ["Jay Jeyaruban <jayjeyaruban@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/JayJeyaruban/arrpc"
+homepage = "https://github.com/JayJeyaruban/arrpc"
+readme = "README.md"
+license = "MIT"
+
+[dependencies]
+# Workspace deps
+arrpc-core = { workspace = true }
+anyhow = { workspace = true, optional = true }
+serde = { workspace = true, optional = true }
+async-trait = { workspace = true, optional = true }
+serde_json = { workspace = true, optional = true }
+derive_more = { workspace = true }
+
+# Other
+reqwest = { version = "0.11.23", optional = true, features = [
+  "json",
+  "rustls-tls",
+] }
+tracing = "0.1.40"
+http = { version = "1.0.0", default-feature = false, optional = true }
+
+[features]
+default = ["http"]
+
+http = [
+  "dep:serde",
+  "dep:async-trait",
+  "dep:serde_json",
+  "dep:reqwest",
+  "dep:anyhow",
+  "dep:http",
+]

@@ -1,0 +1,70 @@
+[package]
+name = "arrpc"
+description = "A simple RPC library for modular-monolith development"
+authors = ["Jay Jeyaruban <jayjeyaruban@gmail.com>"]
+version = "0.1.0"
+edition = "2021"
+repository = "https://github.com/JayJeyaruban/arrpc"
+homepage = "https://github.com/JayJeyaruban/arrpc"
+readme = "README.md"
+license = "MIT"
+keywords = ["rpc", "http", "tower", "hyper"]
+categories = [
+  "network-programming",
+  "web-programming::http-server",
+  "web-programming::http-client",
+]
+
+[workspace]
+members = ["arrpc-core", "arrpc-derive", "arrpc-contract"]
+
+[workspace.dependencies]
+# Members
+arrpc-core = { version = "0.1", path = "arrpc-core" }
+arrpc-contract = { version = "0.1", path = "arrpc-contract" }
+arrpc-derive = { version = "0.1", path = "arrpc-derive" }
+
+# Others
+serde = "1.0.194"
+async-trait = "0.1.77"
+serde_json = "1.0.111"
+anyhow = "1.0.79"
+derive_more = "0.99.17"
+
+[features]
+default = ["hyper"]
+hyper = [
+  "dep:hyper",
+  "dep:hyper-util",
+  "dep:futures-util",
+  "dep:serde_json",
+  "dep:http-body-util",
+]
+
+[dependencies]
+# Members
+arrpc-core = { workspace = true }
+arrpc-contract = { workspace = true }
+arrpc-derive = { workspace = true }
+
+# Workspace deps
+async-trait = { workspace = true }
+anyhow = { workspace = true }
+derive_more = { workspace = true }
+
+# Optional
+serde_json = { workspace = true, optional = true }
+hyper = { version = "1.1.0", features = ["server", "http1"], optional = true }
+hyper-util = { version = "0.1.2", features = ["tokio"], optional = true }
+futures-util = { version = "0.3.30", optional = true }
+http-body-util = { version = "0.1.0", optional = true }
+
+# Other
+
+
+[dev-dependencies]
+# Workspace 
+serde = { workspace = true, features = ["derive"] }
+
+# Other
+tokio = { version = "1.35.1", features = ["rt", "macros"] }
