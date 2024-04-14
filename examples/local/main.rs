@@ -17,9 +17,26 @@ mod sample {
     }
 
     pub type Contract<S> = LocalContract<S>;
+    pub use arrpc::core::MakeClient;
 
     #[derive(Default)]
     pub struct MyServiceImpl;
+
+    #[arrpc_service(&MyServiceImpl)]
+    #[async_trait]
+    #[obake::versioned]
+    #[obake(version("0.1.0"))]
+    #[obake(version("0.2.0"))]
+    pub trait MyService {
+        #[obake(cfg(">=0.1.0"))]
+        async fn func_a(&self) -> String;
+
+        #[obake(cfg(">=0.1.0"))]
+        async fn func_b(&self, s: String) -> Result<u32, String>;
+
+        #[obake(cfg(">=0.2.0"))]
+        async fn func_c(&self, s: String) -> String;
+    }
 
     #[async_trait]
     impl MyService for MyServiceImpl {
@@ -37,29 +54,17 @@ mod sample {
             Ok(s.repeat(3))
         }
     }
-
-    #[arrpc_service(&MyServiceImpl)]
-    #[async_trait]
-    pub trait MyService {
-        async fn func_a(&self) -> String;
-
-        async fn func_b(&self, s: String) -> Result<u32, String>;
-
-        async fn func_c(&self, s: String) -> String;
-    }
 }
 
 use anyhow::Context;
-use arrpc::core::{MakeClient, UniversalClient};
 
-use crate::sample::{create_service, Contract, MyService, MyServiceImpl};
+use crate::sample::{create_service, Contract, MakeClient, MyService};
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
     let server = create_service();
     println!("Direct:");
-    let client: UniversalClient<local::LocalContractClient<&MyServiceImpl>> =
-        Contract::make_client(&server.service);
+    let client = Contract::make_client(&server.service);
     call_funcs(&server.service)
         .await
         .expect("unable to call funcs on service");

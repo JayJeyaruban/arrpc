@@ -14,6 +14,17 @@ proc-macro2 = "1.0.69"
 quote = "1.0.33"
 syn = { version = "2.0.39", features = ["full"] }
 convert_case = "0.6.0"
+proc-macro-error = "1.0.4"
+itertools = { version = "0.12.1" }
+
+# Optional
+semver = { version = "1.0.22", optional = true }
+
+# Workspace dependencies
+
+[features]
+default = []
+obake = ["dep:semver"]
 
 
 [lib]

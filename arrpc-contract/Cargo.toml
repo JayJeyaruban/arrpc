@@ -24,7 +24,7 @@ reqwest = { version = "0.11.23", optional = true, features = [
   "rustls-tls",
 ] }
 tracing = "0.1.40"
-http = { version = "1.0.0", default-feature = false, optional = true }
+http = { version = "1.0.0", optional = true }
 
 [features]
 default = ["http"]

@@ -1,8 +1,8 @@
 use std::{ops::Deref, pin::Pin, sync::Arc};
 
 use anyhow::Context;
-use arrpc_core::{Service, UniversalServer};
 use arrpc_contract::http::HttpContract;
+use arrpc_core::{Service, UniversalServer};
 use futures_util::{Future, FutureExt};
 use http_body_util::{BodyExt, Full};
 use hyper::{
@@ -31,7 +31,7 @@ where
     type Future = Pin<Box<dyn Future<Output = Result<Self::Response, Self::Error>> + Send>>;
 
     fn call(&self, req: Request<Incoming>) -> Self::Future {
-        let svc = self.0.clone();
+        let server = self.0.clone();
         async move {
             let mut forward_req = Request::builder();
 
@@ -53,7 +53,7 @@ where
                 .body(body)
                 .context("creating request for UniversalServer")?;
 
-            let res = svc
+            let res = server
                 .accept(forward_req.into())
                 .await
                 .context("calling UniversalServer")?;
