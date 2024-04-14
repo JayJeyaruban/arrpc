@@ -30,6 +30,7 @@ async-trait = "0.1.77"
 serde_json = "1.0.111"
 anyhow = "1.0.79"
 derive_more = "0.99.17"
+obake = "1.0.5"
 
 [features]
 default = ["hyper"]
@@ -40,6 +41,7 @@ hyper = [
   "dep:serde_json",
   "dep:http-body-util",
 ]
+obake = ["arrpc-derive/obake"]
 
 [dependencies]
 # Members
@@ -63,8 +65,11 @@ http-body-util = { version = "0.1.0", optional = true }
 
 
 [dev-dependencies]
+arrpc-derive = { workspace = true, features = ["obake"] }
+
 # Workspace 
 serde = { workspace = true, features = ["derive"] }
 
 # Other
 tokio = { version = "1.35.1", features = ["rt", "macros"] }
+obake = { workspace = true }
