@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## v0.2.1 - 2024-04-30
+### Package updates
+- arrpc-derive bumped to arrpc-derive-v0.2.1
+### Global changes
+#### Miscellaneous Chores
+- **(cog)** adjust cog hook - (7ec474e) - Jay Jeyaruban
+
+- - -
+
 ## v0.2.0 - 2024-04-30
 ### Package updates
 - arrpc-contract bumped to arrpc-contract-v0.2.0

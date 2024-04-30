@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## arrpc-derive-v0.2.1 - 2024-04-30
+#### Bug Fixes
+- **(macro)** remove Debug on ProcVariant - (71d0d6f) - Jay Jeyaruban
+
+- - -
+
 ## arrpc-derive-v0.2.0 - 2024-04-30
 #### Features
 - **(obake)** versioning support through obake - (4798edb) - Jay Jeyaruban
