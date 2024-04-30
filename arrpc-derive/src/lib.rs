@@ -232,7 +232,6 @@ impl From<ArrpcImpls> for TokenStream {
     }
 }
 
-#[derive(Debug)]
 struct ProcVariant {
     variant: Variant,
     svc_match_stmt: Arm,
