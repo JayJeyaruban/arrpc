@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file. See [conventional commits](https://www.conventionalcommits.org/) for commit guidelines.
 
 - - -
+## arrpc-derive-v0.2.0 - 2024-04-30
+#### Features
+- **(obake)** versioning support through obake - (4798edb) - Jay Jeyaruban
+
+- - -
+
 ## arrpc-derive-v0.1.0 - 2024-04-30
 #### Features
 - arrpc_service macro with examples - (d993763) - Jay Jeyaruban

@@ -2,7 +2,7 @@
 name = "arrpc-derive"
 description = "Macros for ARRPC"
 authors = ["Jay Jeyaruban <jayjeyaruban@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 repository = "https://github.com/JayJeyaruban/arrpc"
 homepage = "https://github.com/JayJeyaruban/arrpc"

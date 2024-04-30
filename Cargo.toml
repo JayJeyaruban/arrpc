@@ -2,7 +2,7 @@
 name = "arrpc"
 description = "A simple RPC library for modular-monolith development"
 authors = ["Jay Jeyaruban <jayjeyaruban@gmail.com>"]
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 repository = "https://github.com/JayJeyaruban/arrpc"
 homepage = "https://github.com/JayJeyaruban/arrpc"
@@ -20,9 +20,9 @@ members = ["arrpc-core", "arrpc-derive", "arrpc-contract"]
 
 [workspace.dependencies]
 # Members
-arrpc-core = { version = "0.1", path = "arrpc-core" }
-arrpc-contract = { version = "0.1", path = "arrpc-contract" }
-arrpc-derive = { version = "0.1", path = "arrpc-derive" }
+arrpc-core = { version = "0.2", path = "arrpc-core" }
+arrpc-contract = { version = "0.2", path = "arrpc-contract" }
+arrpc-derive = { version = "0.2", path = "arrpc-derive" }
 
 # Others
 serde = "1.0.194"
