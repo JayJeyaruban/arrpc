@@ -1,7 +1,7 @@
 tag_prefix = "v"
 
 pre_package_bump_hooks = [
-    "cargo set-version {{version}}"
+    "cargo set-version -p {{package}} {{version}}"
 ]
 
 [packages]
