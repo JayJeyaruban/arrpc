@@ -1,0 +1,12 @@
+tag_prefix = "v"
+
+pre_package_bump_hooks = [
+    "cargo set-version {{version}}"
+]
+
+[packages]
+arrpc = { path = "." }
+arrpc-core = { path = "arrpc-core" }
+arrpc-derive = { path = "arrpc-derive" }
+arrpc-contract = { path = "arrpc-contract" }
+
