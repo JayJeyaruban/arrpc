@@ -75,10 +75,10 @@ pub fn arrpc_service(attr: TokenStream, item: TokenStream) -> TokenStream {
         .collect_vec();
     let arrpc_svc_impl: ItemImpl = parse_quote! {
         #[async_trait::async_trait]
-        impl arrpc_core::Service for #svc_impl {
-            async fn accept<R>(&self, req: R) -> Result<R::Response>
+        impl arrpc::core::Service for #svc_impl {
+            async fn accept<R>(&self, req: R) -> arrpc::core::Result<R::Response>
             where
-                R: arrpc_core::Request + Send + Sync,
+                R: arrpc::core::Request + Send + Sync,
             {
                 let #proc_var: #proc_name = req.proc()?;
                 match #proc_var {
@@ -103,8 +103,8 @@ pub fn arrpc_service(attr: TokenStream, item: TokenStream) -> TokenStream {
         .collect_vec();
     let unv_client_impl: ItemImpl = parse_quote! {
         #async_attr
-        impl<T> #svc_name for arrpc_core::UniversalClient<T>
-            where T: arrpc_core::ClientContract + Send + Sync
+        impl<T> #svc_name for arrpc::core::UniversalClient<T>
+            where T: arrpc::core::ClientContract + Send + Sync
         {
             #(#fn_impls)*
         }
@@ -136,7 +136,7 @@ fn wrap_with_arrpc_result(old: &ReturnType) -> ReturnType {
     };
 
     let replacement_ret: ReturnType = parse_quote! {
-        -> arrpc_core::Result<#ret_type>
+        -> arrpc::core::Result<#ret_type>
     };
 
     replacement_ret
