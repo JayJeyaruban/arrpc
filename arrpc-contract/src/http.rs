@@ -7,6 +7,7 @@ use serde::{de::DeserializeOwned, Serialize};
 
 const AUTH_KEY: &str = "auth-key";
 
+#[derive(Clone)]
 pub struct HttpContract {
     pub auth_token: String,
 }
